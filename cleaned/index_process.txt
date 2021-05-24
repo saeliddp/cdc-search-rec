@@ -1,0 +1,24 @@
+Initially, I indexed the original file collection, but after
+qualitative testing, I realized something wasn't quite right.
+I inspected the actual HTML contents of the files I crawled,
+and it seemed like there was a lot of junk that could mess with
+indexing. So, I decided to do some HTML preprocessing before
+indexing.
+
+cleaner.py traverses through the scraped files, replacing each
+non-empty HTML document with a simple HTML document only containing
+a title, body, and paragraph with all of the raw text from header/
+list/paragraph tags in the original document. Any empty files are
+deleted from the file system.
+
+After indexing on this cleaned collection, I noticed a significant
+qualitative improvement in the results. Here are the final index
+statistics:
+
+Number of documents: 923
+Number of terms: 16991
+Number of postings: 261439
+Number of fields: 0
+Number of tokens: 783943
+Field names: []
+Positions:   false
