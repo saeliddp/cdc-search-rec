@@ -21,18 +21,14 @@ if (isset($_POST["search_string"]))
 
    fwrite($qfile, "import pyterrier as pt\nif not pt.started():\n\tpt.init()\n\n");
    fwrite($qfile, "import pandas as pd\nqueries = pd.DataFrame([[\"q1\", \"$search_string\"]], columns=[\"qid\",\"query\"])\n");
-   fwrite($qfile, "index = pt.IndexFactory.of(\"./reddit_index/data.properties\")\n");
-   fwrite($qfile, "tf_idf = pt.BatchRetrieve(index, wmodel=\"TF_IDF\")\n");
-
-   for ($i=0; $i<10; $i++)
-   {
-      fwrite($qfile, "print(index.getMetaIndex().getItem(\"filename\",tf_idf.transform(queries).docid[$i]))\n");
-      fwrite($qfile, "print(index.getMetaIndex().getItem(\"title\",tf_idf.transform(queries).docid[$i]))\n");
-   }
+   fwrite($qfile, "index = pt.IndexFactory.of(\"./cleaned/cdc_index/data.properties\")\n");
+   fwrite($qfile, "bm25 = pt.BatchRetrieve(index, wmodel=\"BM25\", metadata=[\"docno\", \"filename\", \"title\"], num_results=15)\n");
+   fwrite($qfile, "results = bm25.transform(queries)\n");
+   fwrite($qfile, "for i in range(len(results)):\n\tprint(results[\"filename\"][i])\n\tprint(results[\"title\"][i])\n");
    
    fclose($qfile);
 
-   exec("ls | nc -u 127.0.0.1 10100");
+   exec("ls | nc -u 127.0.0.1 10104");
    sleep(3);
 
    $stream = fopen("output", "r");
