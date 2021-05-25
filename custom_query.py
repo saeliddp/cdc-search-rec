@@ -17,5 +17,5 @@ results = bm25.transform(query)
 for i in range(len(results)):
 	real_url = results["filename"][i][1:]
 	real_url = "https://" + real_url[real_url.index("/") + 1:]
-	print("<a href={}>{}</a><br>".format(real_url, results["title"][i]))
+	print("<a href={} id=\"{}\">{}</a><br>".format(real_url, results["docno"][i], results["title"][i]))
 
