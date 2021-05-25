@@ -7,46 +7,57 @@
 
 <h2>My Simple Search</h2>
 
-<form action="search.php" method="post">
-<input type="text" size=40 name="search_string" value="<?php echo $_POST["search_string"];?>"/>
-<input type="submit" value="Search"/>
-</form>
-
 <?php
-
-if (isset($_POST["search_string"]))
+	
+if (!isset($_POST["search_string"]) && !(isset($_GET["age"]) && isset($_GET["symptoms"]) && isset($_GET["conditions"])))
 {
-   $search_string = $_POST["search_string"];
-   $qfile = fopen("query.py", "w");
 
-   fwrite($qfile, "import pyterrier as pt\nif not pt.started():\n\tpt.init()\n\n");
-   fwrite($qfile, "import pandas as pd\nqueries = pd.DataFrame([[\"q1\", \"$search_string\"]], columns=[\"qid\",\"query\"])\n");
-   fwrite($qfile, "index = pt.IndexFactory.of(\"./cleaned/cdc_index/data.properties\")\n");
-   fwrite($qfile, "bm25 = pt.BatchRetrieve(index, wmodel=\"BM25\", metadata=[\"docno\", \"filename\", \"title\"], num_results=15)\n");
-   fwrite($qfile, "results = bm25.transform(queries)\n");
-   fwrite($qfile, "for i in range(len(results)):\n\tprint(results[\"filename\"][i])\n\tprint(results[\"title\"][i])\n");
-   
-   fclose($qfile);
+	$stream = fopen("html_components/questionnaire.html", "r");
+	$line="";
+	while(($line=fgets($stream))!=false)
+	{
+		echo $line;
+	}
+	fclose($stream);
+} else
+{
+	echo "<form action=\"search.php\" method=\"post\">";
+	echo "<input type=\"text\" size=40 name=\"search_string\" value=\"{$_POST["search_string"]}\"/>";
+	echo "<input type=\"submit\" value=\"Search\"/>";
+	echo "</form>";
+	if (isset($_POST["search_string"]))
+	{
+		$search_string = $_POST["search_string"];
+		$qfile = fopen("session/query", "w");
+		fwrite($qfile, $search_string);
+		fclose($qfile);
+		
+		$logfile = fopen("query_log.txt", "a");
+		$rightnow = date("Y-m-d H:i:s");
+		fwrite($logfile, "$rightnow $search_string\n");
+		fclose($logfile);
 
-   exec("ls | nc -u 127.0.0.1 10104");
-   sleep(3);
+   		exec("echo {$search_string} | nc -u 127.0.0.1 10104");
+   		sleep(3);
 
-   $stream = fopen("output", "r");
+   		$stream = fopen("session/results", "r");
 
-   $line=fgets($stream);
+   		$line=fgets($stream);
 
-   while(($line=fgets($stream))!=false)
-   {
-	$clean_line = preg_replace('/\s+/',',',$line);
-	$record = explode("./", $clean_line);
-	$line = fgets($stream);
-	echo "<a href=\"http://$record[1]\">".$line."</a><br/>\n";
-   }
+   		while(($line=fgets($stream))!=false)
+   		{
+			echo $line;
+   		}
 
-   fclose($stream);
-   
-   exec("rm query.py");
-   exec("rm output");
+   		fclose($stream);
+	} else
+	{
+		$groupfile = fopen("session/group", "w");
+		fwrite($groupfile, $_GET["age"]);
+		fwrite($groupfile, $_GET["symptoms"]);
+		fwrite($groupfile, $_GET["conditions"]);
+		fclose($groupfile);
+	}
 }
 ?>
 
