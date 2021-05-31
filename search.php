@@ -37,9 +37,9 @@ if (!isset($_POST["search_string"]) && !(isset($_GET["age"]) && isset($_GET["sym
 		fwrite($logfile, "$rightnow $search_string\n");
 		fclose($logfile);
 
-   		exec("echo {$search_string} | nc -u 127.0.0.1 10104");
+   		exec("echo {$search_string} | nc -u 127.0.0.1 10174");
    		sleep(3);
-
+		
    		$stream = fopen("session/results", "r");
 
    		$line=fgets($stream);
