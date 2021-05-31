@@ -1,11 +1,19 @@
-<form method="get" action="search.php">
-<input type="radio" name="age" value="y">Over 60
-<input type="radio" name="age" value="n">Under 60
-<input type="radio" name="age" value="x" hidden checked>
-<input type="radio" name="symptoms" value="y">Exhibiting
-<input type="radio" name="symptoms" value="n">Not exhibiting
-<input type="radio" name="symptoms" value="x" hidden checked>
-<input type="radio" name="conditions" value="y">Have conditions
-<input type="radio" name="conditions" value="n">No conditions
-<input type="radio" name="conditions" value="x" hidden checked>
-<input type="submit">
+<div id="form-page">
+  <img src="images/logo.png" alt="logo">
+  <h2>SURVEY FOR CUSTOMIZED RESULTS</h2>
+  <form method="get" action="search.php">
+    <p>1. Are you over the age of 60?</p>
+    <input type="radio" name="age" value="y">YES
+    <input type="radio" name="age" value="n">NO
+    <input type="radio" name="age" value="x" hidden checked>
+    <p>2. Are you experiencing COVID-19 symptoms?</p>
+    <input type="radio" name="symptoms" value="y">YES
+    <input type="radio" name="symptoms" value="n">NO
+    <input type="radio" name="symptoms" value="x" hidden checked>
+    <p>3. Do you have any underlying health conditions?</p>
+    <input type="radio" name="conditions" value="y">YES
+    <input type="radio" name="conditions" value="n">NO
+    <input type="radio" name="conditions" value="x" hidden checked>
+    <input type="submit" value="GET STARTED">
+  </form>
+</div>

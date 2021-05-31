@@ -1,0 +1,53 @@
+body {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 1.1em;
+  font-weight: 500;
+}
+
+#form-page {
+  margin-left: 31%;
+  margin-right: 31%;
+  margin-top: 6em;
+}
+
+#form-page > img {
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+#form-page h2 {
+  color: #7084EA;
+  margin-bottom: 1em;
+}
+
+#form-page form {
+  margin-left: .2em;
+}
+
+#form-page input[value="n"] {
+  margin-left: 2em;
+}
+
+#form-page input[type="submit"] {
+  display: block;
+  margin-top: 4em;
+  padding: .6em 1.4em;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: .9em;
+  color: white;
+  background-color: #7084EA;
+  border: none;
+  border-radius: 8px;
+  transition: all ease 0.2s;
+}
+
+#form-page input[type="submit"]:hover {
+  background-color: #5d71d4;
+  transform: scale(1.05);
+  transition: all ease 0.3s;
+}
+
+#form-page input[type="submit"]:active {
+  transform: scale(0.95);
+  transition: all ease 0.2s;
+}

@@ -1,14 +1,17 @@
 <html>
 <head>
-	<title>My Simple Search</title>
+	<title>Covidsearch</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="html_components/styles.css">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link href="images/favicon.png" type="image/gif" rel="shortcut icon">
 </head>
 
 <body>
 
-<h2>My Simple Search</h2>
-
 <?php
-	
+
 if (!isset($_POST["search_string"]) && !(isset($_GET["age"]) && isset($_GET["symptoms"]) && isset($_GET["conditions"])))
 {
 
@@ -31,7 +34,7 @@ if (!isset($_POST["search_string"]) && !(isset($_GET["age"]) && isset($_GET["sym
 		$qfile = fopen("session/query", "w");
 		fwrite($qfile, $search_string);
 		fclose($qfile);
-		
+
 		$logfile = fopen("query_log.txt", "a");
 		$rightnow = date("Y-m-d H:i:s");
 		fwrite($logfile, "$rightnow $search_string\n");
