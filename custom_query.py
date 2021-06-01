@@ -66,5 +66,8 @@ if res_len > 0:
 	results_tuples.sort(reverse=True, key=lambda x: x[1])
 
 for t in results_tuples:	
-	print("<a href=\"redirect.php?real_url={}&docno={}\">{}</a><br/>".format(t[3], t[0], t[2]))
-
+	print("<div class=\"results\">")
+	print("<ul class=\"results-ul\">")
+	print("<li><a href=\"redirect.php?real_url={}&docno={}\">{}</a></li><br/>".format(t[3], t[0], t[2]))
+	print("</ul>")
+	print("</div>")

@@ -55,11 +55,7 @@ if (!isset($_POST["search_string"]) && !(isset($_GET["age"]) && isset($_GET["sym
 
    		while(($line=fgets($stream))!=false)
    		{
-			echo "<div class=\"results\">";
-				echo "<ul class=\"results-ul\">";
-					echo "<li>" .$line. "</li>";
-				echo "</ul>";
-			echo "</div>";
+			echo $line;
    		}
 
    		fclose($stream);
