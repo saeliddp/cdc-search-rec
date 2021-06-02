@@ -3,7 +3,7 @@
 	<title>Covidsearch</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="html_components/styles.css">
-	<link rel="stylesheet" href="/style.css">
+	<link rel="stylesheet" href="style.php">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 	<link href="images/favicon.png" type="image/gif" rel="shortcut icon">
