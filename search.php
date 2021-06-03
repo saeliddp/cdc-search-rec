@@ -48,7 +48,7 @@ if (!isset($_POST["search_string"]) && !(isset($_GET["age"]) && isset($_GET["sym
 
    		exec("echo {$search_string} | nc -u 127.0.0.1 10174");
    		sleep(3);
-		
+
    		$stream = fopen("session/results", "r");
 
    		$line=fgets($stream);
@@ -69,6 +69,11 @@ if (!isset($_POST["search_string"]) && !(isset($_GET["age"]) && isset($_GET["sym
 	}
 }
 ?>
-
+<footer>
+	<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+		<img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"/>
+	</a>
+	<p>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</p>
+</footer>
 </body>
 </html>
