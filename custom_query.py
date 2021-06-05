@@ -3,7 +3,7 @@ import pyterrier as pt
 from sklearn.metrics.pairwise import cosine_similarity
 
 # how much we want relevance to impact final rank [0, 1]
-R_WEIGHT = 0
+R_WEIGHT = 0.03
 
 if not pt.started():
 	pt.init()
