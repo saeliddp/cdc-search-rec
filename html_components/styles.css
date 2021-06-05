@@ -2,6 +2,7 @@ body {
   font-family: 'IBM Plex Sans', sans-serif;
   font-size: 1.1em;
   font-weight: 500;
+  margin-bottom: 10em;
 }
 
 #form-page {
@@ -50,4 +51,19 @@ body {
 #form-page input[type="submit"]:active {
   transform: scale(0.95);
   transition: all ease 0.2s;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  background-color: #fff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: .4em 10em;
+  box-shadow: 0px -8px 20px rgb(235, 235, 235);
+}
+
+footer img {
+  padding: 1em;
 }

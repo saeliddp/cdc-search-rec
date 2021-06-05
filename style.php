@@ -24,7 +24,7 @@
     margin-top: 3em;
     margin-right: 0.7em;
     padding-left: 1.5em;
-    border-radius:30px;
+    border-radius:8px;
     border:1px solid #dcdcdc;
   }
 
@@ -38,8 +38,19 @@
     font-size: .9em;
     color: white;
     background-color: #7084EA;
-    border-radius:30px;
+    border-radius:8px;
     border: none;
+}
+
+.home-search-submit:hover {
+  background-color: #5d71d4;
+  transform: scale(1.05);
+  transition: all ease 0.3s;
+}
+
+.home-search-submit:active {
+  transform: scale(0.95);
+  transition: all ease 0.2s;
 }
 
 .results {
